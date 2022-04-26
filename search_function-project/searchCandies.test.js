@@ -32,4 +32,16 @@ describe('searchCandies', () => {
     );
   });
 
+  it('works even when the search criterion is given in upper case', () => {
+    expect(searchCandies('MA', 10)).toEqual(
+      [ 'Mars', 'Maltesers' ]
+    );
+  });
+
+  it('works even when the search criterion is given in funny case', () => {
+    expect(searchCandies('mA', 10)).toEqual(
+      [ 'Mars', 'Maltesers' ]
+    );
+  });
+
 });
