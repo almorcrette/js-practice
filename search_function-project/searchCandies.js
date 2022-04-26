@@ -14,6 +14,10 @@ const candies = [
   { name: 'Fraise Tagada', price: 5.99 }
 ];
 
+const capitalizeFirst = (string) => {
+  return string.charAt(0).toUpperCase() + string.substr(1).toLowerCase();
+};
+
 const nameOnly = (candy) => {
   return candy.name;
 };
@@ -23,9 +27,10 @@ const namesOnly = (searchReturn) => {
 };
 
 const searchCandies = (searchCriteria, maxPrice) => {
+  let searchCiteriaCapFirst = capitalizeFirst(searchCriteria);
   let searchReturn =  candies.filter(
     (candy) => {
-      if ( (candy.price <= maxPrice) && (candy.name.startsWith(searchCriteria)) ) {
+      if ( (candy.price <= maxPrice) && (candy.name.startsWith(searchCiteriaCapFirst)) ) {
         return true;
       } else {
         return false;
@@ -36,6 +41,7 @@ const searchCandies = (searchCriteria, maxPrice) => {
 };
 
 module.exports = {
+  capitalizeFirst,
   nameOnly,
   namesOnly,
   searchCandies,
