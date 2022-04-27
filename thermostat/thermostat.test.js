@@ -23,3 +23,13 @@ describe('You can decrese the temperature with a down method', () => {
     expect(myThermostat.temperature).toEqual(15);
   });
 });
+
+describe('The minimum possible tempoerature is 10 degress', () => {
+  test('down from 20 by 12 will return notification', () => {
+    expect(myThermostat.down(12)).toEqual('Minimum temperature = 10 degress');
+  });
+  test('down from 20 by 12 will set temperature to 10', () => {
+    myThermostat.down(12);
+    expect(myThermostat.temperature).toEqual(10);
+  });
+});

@@ -8,7 +8,12 @@ class Thermostat {
   };
 
   down(degrees) {
-    this.temperature -= degrees
+    if (this.temperature - degrees < 10) {
+      this.temperature = 10;
+      return 'Minimum temperature = 10 degress'
+    } else {
+      this.temperature -= degrees
+    }
   };
 };
 
