@@ -25,7 +25,7 @@ describe('You can decrese the temperature with a down method', () => {
   });
 });
 
-describe('The minimum possible tempoerature is 10 degress', () => {
+describe('The minimum possible temperature is 10 degress', () => {
   test('down from 20 by 12 will return notification', () => {
     expect(myThermostat.down(12)).toEqual('Minimum temperature = 10 degress');
   });
@@ -37,15 +37,25 @@ describe('The minimum possible tempoerature is 10 degress', () => {
 
 test('Power saving mode on by default', () => {
   expect(myThermostat.powerSavingMode).toEqual('on');
-})
+});
 
 test('Power saving mode can be turned off', () => {
   myThermostat.togglePowerSaving();
   expect(myThermostat.powerSavingMode).toEqual('off');
-})
+});
 
 test('Power saving mode can be be turned on after being turned off', () => {
   myThermostat.togglePowerSaving();
   myThermostat.togglePowerSaving();
   expect(myThermostat.powerSavingMode).toEqual('on');
-})
+});
+
+describe('Maximum temperatue is 25 if the power saving is on', () => {
+  test('up from 20 by 16 when power saving on will return notification', () => {
+    expect(myThermostat.up(6)).toEqual('Power saving ON - Maximum temperature = 25');
+  });
+  test('up from 20 by 16 when power saving on will set temperature to 25', () => {
+    myThermostat.up(6);
+    expect(myThermostat.temperature).toEqual(25);
+  });
+});
