@@ -1,11 +1,6 @@
 class ShoppingBasket {
   constructor() {
     this.basket = [];
-    this.discount = 0;
-  }
-
-  applyDiscount(discount) {
-    this.discount = discount;
   }
 
   getTotalPrice() {
@@ -13,7 +8,7 @@ class ShoppingBasket {
     this.basket.forEach( (x) => {
       totalPrice += x.getPrice();
     })
-    return totalPrice - this.discount;
+    return totalPrice;
   }
 
   addItem(candy) {
