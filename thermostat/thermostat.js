@@ -4,31 +4,37 @@ class Thermostat {
     this.powerSavingMode = 'on';
   };
 
+  getTemperature() {
+    return this.temperature;
+  };
+
   up(degrees) {
     if (this.powerSavingMode === 'on') {
       if (this.temperature + degrees > 25) {
         this.temperature = 25;
-        return 'Power saving ON - Maximum temperature = 25';
+        console.log('Power saving ON - Maximum temperature = 25');
       } else {
         this.temperature += degrees;
       };
     } else if (this.powerSavingMode = 'off') {
       if (this.temperature + degrees > 32) {
         this.temperature = 32;
-        return 'Power saving OFF - Maximum temperature = 32';
+        console.log('Power saving OFF - Maximum temperature = 32');
       } else {
         this.temperature += degrees;
       };    
     };
+    return this.temperature;
   };
 
   down(degrees) {
     if (this.temperature - degrees < 10) {
       this.temperature = 10;
-      return 'Minimum temperature = 10 degress';
+      console.log('Minimum temperature = 10 degress');
     } else {
-      this.temperature -= degrees
+      this.temperature -= degrees;
     };
+    return this.temperature;
   };
 
   togglePowerSaving() {
