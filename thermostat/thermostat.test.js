@@ -26,12 +26,14 @@ describe('You can decrese the temperature with a down method', () => {
 });
 
 describe('The minimum possible temperature is 10 degress', () => {
-  test('down from 20 by 12 will return notification', () => {
-    expect(myThermostat.down(12)).toEqual('Minimum temperature = 10 degress');
-  });
-  test('down from 20 by 12 will set temperature to 10', () => {
-    myThermostat.down(12);
-    expect(myThermostat.temperature).toEqual(10);
+  describe('down from 20 by 12', () => {
+    test('down from 20 by 12 will return notification', () => {
+      expect(myThermostat.down(12)).toEqual('Minimum temperature = 10 degress');
+    });
+    test('down from 20 by 12 will set temperature to 10', () => {
+      myThermostat.down(12);
+      expect(myThermostat.temperature).toEqual(10);
+    });
   });
 });
 
@@ -51,11 +53,13 @@ test('Power saving mode can be be turned on after being turned off', () => {
 });
 
 describe('Maximum temperatue is 25 if the power saving is on', () => {
-  test('up from 20 by 16 when power saving on will return notification', () => {
-    expect(myThermostat.up(6)).toEqual('Power saving ON - Maximum temperature = 25');
-  });
-  test('up from 20 by 16 when power saving on will set temperature to 25', () => {
-    myThermostat.up(6);
-    expect(myThermostat.temperature).toEqual(25);
+  describe('up from 20 by 16 when power saving on', () => {
+    test('will return notification', () => {
+      expect(myThermostat.up(6)).toEqual('Power saving ON - Maximum temperature = 25');
+    });
+    test('will set temperature to 25', () => {
+      myThermostat.up(6);
+      expect(myThermostat.temperature).toEqual(25);
+    });
   });
 });
