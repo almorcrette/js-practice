@@ -67,17 +67,19 @@ describe('Maximum temperatue is 25 if the power saving is on', () => {
 describe('Maximum temperature is 32 if power saving is off', () => {
   describe('up from 20 by 13 when power saving is off', () => {
     test('will return notification', () => {
-      console.log("Starting first test under consideration")
       myThermostat.togglePowerSaving();
-      console.log(myThermostat)
       expect(myThermostat.up(13)).toEqual('Power saving OFF - Maximum temperature = 32');
     });
     test('will set temperature to 32', () => {
-      console.log("Starting second test under consideration")
       myThermostat.togglePowerSaving();
-      console.log(myThermostat)
       myThermostat.up(13)
       expect(myThermostat.temperature).toEqual(32);
     });
   });
+});
+
+test('Reset temperature to 20 with reset method', () => {
+  myThermostat.up(5);
+  myThermostat.reset();
+  expect(myThermostat.temperature).toEqual(20);
 });
