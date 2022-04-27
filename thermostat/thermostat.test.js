@@ -83,3 +83,28 @@ test('Reset temperature to 20 with reset method', () => {
   myThermostat.reset();
   expect(myThermostat.temperature).toEqual(20);
 });
+
+describe('Check current energy usage', () => {
+  describe('<18 is low-usage', () => {
+    test('17 returns low-usage', () => {
+      myThermostat.temperature = 17;
+      expect(myThermostat.currentEnergyUsage()).toEqual('Low-usage');
+    });
+  });
+  describe('<=25 is medium-usage', () => {
+    test('18 returns low-usage', () => {
+      myThermostat.temperature = 18;
+      expect(myThermostat.currentEnergyUsage()).toEqual('Medium-usage');
+    });
+    test('24 returns low-usage', () => {
+      myThermostat.temperature = 24;
+      expect(myThermostat.currentEnergyUsage()).toEqual('Medium-usage');
+    });
+  });
+  describe('>25 is high-usage', () => {
+    test('26 returns low-usage', () => {
+      myThermostat.temperature = 26;
+      expect(myThermostat.currentEnergyUsage()).toEqual('High-usage');
+    });
+  });
+})
