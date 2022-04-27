@@ -8,7 +8,7 @@ class Thermostat {
     return this.temperature;
   };
 
-  up(degrees) {
+  up(degrees = 1) {
     if (this.powerSavingMode === 'on') {
       if (this.temperature + degrees > 25) {
         this.temperature = 25;
@@ -27,7 +27,7 @@ class Thermostat {
     return this.temperature;
   };
 
-  down(degrees) {
+  down(degrees = 1) {
     if (this.temperature - degrees < 10) {
       this.temperature = 10;
       console.log('Minimum temperature = 10 degress');

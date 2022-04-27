@@ -22,7 +22,11 @@ test('The Thermostat starts with initial temperature of 20 degrees', () => {
 });
 
 describe('You can increase the temperature with an up method', () => {
-  test('use up method to increase by 5 degress', () => {
+  test('use up method with no argument increases by 1 degree', () => {
+    myThermostat.up();
+    expect(myThermostat.temperature).toEqual(21);
+  });
+  test('use up method to increase by 5 degrees', () => {
     myThermostat.up(5);
     expect(myThermostat.temperature).toEqual(25);
   });
@@ -32,6 +36,10 @@ describe('You can increase the temperature with an up method', () => {
 });
 
 describe('You can decrese the temperature with a down method', () => {
+  test('use down method with no argument decreases by 1 degree', () => {
+    myThermostat.down();
+    expect(myThermostat.temperature).toEqual(19);
+  });
   test('use down method to decrease by 5 degress', () => {
     myThermostat.down(5);
     expect(myThermostat.temperature).toEqual(15);
