@@ -1,10 +1,11 @@
 class Thermostat {
   constructor() {
     this.temperature = 20;
+    this.powerSavingMode = 'on';
   };
 
   up(degrees) {
-    this.temperature += degrees
+    this.temperature += degrees;
   };
 
   down(degrees) {
@@ -14,6 +15,14 @@ class Thermostat {
     } else {
       this.temperature -= degrees
     }
+  };
+
+  togglePowerSaving() {
+    if (this.powerSavingMode === 'on') {
+      this.powerSavingMode = 'off';
+    } else {
+      this.powerSavingMode = 'on';
+    };
   };
 };
 

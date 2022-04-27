@@ -4,6 +4,7 @@ let myThermostat = new Thermostat();
 
 afterEach(() => {
   myThermostat.temperature = 20;
+  myThermostat.powerSavingMode = 'on';
 });
 
 test('The Thermostat starts with initial temperature of 20 degrees', () => {
@@ -33,3 +34,18 @@ describe('The minimum possible tempoerature is 10 degress', () => {
     expect(myThermostat.temperature).toEqual(10);
   });
 });
+
+test('Power saving mode on by default', () => {
+  expect(myThermostat.powerSavingMode).toEqual('on');
+})
+
+test('Power saving mode can be turned off', () => {
+  myThermostat.togglePowerSaving();
+  expect(myThermostat.powerSavingMode).toEqual('off');
+})
+
+test('Power saving mode can be be turned on after being turned off', () => {
+  myThermostat.togglePowerSaving();
+  myThermostat.togglePowerSaving();
+  expect(myThermostat.powerSavingMode).toEqual('on');
+})
