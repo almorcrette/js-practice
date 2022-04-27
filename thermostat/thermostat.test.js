@@ -59,13 +59,15 @@ test('Power saving mode on by default', () => {
 });
 
 test('Power saving mode can be turned off', () => {
-  myThermostat.togglePowerSaving();
+  myThermostat.setPowerSaving(false);
+  expect(global.console.log).toHaveBeenCalledWith('PSM is now off, max temperature is 32');
   expect(myThermostat.powerSavingMode).toEqual('off');
 });
 
 test('Power saving mode can be be turned on after being turned off', () => {
-  myThermostat.togglePowerSaving();
-  myThermostat.togglePowerSaving();
+  myThermostat.setPowerSaving(false);
+  myThermostat.setPowerSaving(true);
+  expect(global.console.log).toHaveBeenCalledWith('PSM is now on, max temperature is 25');
   expect(myThermostat.powerSavingMode).toEqual('on');
 });
 
@@ -85,12 +87,12 @@ describe('Maximum temperatue is 25 if the power saving is on', () => {
 describe('Maximum temperature is 32 if power saving is off', () => {
   describe('up from 20 by 13 when power saving is off', () => {
     test('will return notification', () => {
-      myThermostat.togglePowerSaving();
+      myThermostat.setPowerSaving(false);
       myThermostat.up(13)
       expect(global.console.log).toHaveBeenCalledWith('Power saving ON - Maximum temperature = 25');
     });
     test('will set temperature to 32', () => {
-      myThermostat.togglePowerSaving();
+      myThermostat.setPowerSaving(false);
       myThermostat.up(13)
       expect(myThermostat.temperature).toEqual(32);
     });

@@ -37,11 +37,13 @@ class Thermostat {
     return this.temperature;
   };
 
-  togglePowerSaving() {
-    if (this.powerSavingMode === 'on') {
+  setPowerSaving(instruction) {
+    if (instruction === false) {
       this.powerSavingMode = 'off';
+      console.log('PSM is now off, max temperature is 32');
     } else {
       this.powerSavingMode = 'on';
+      console.log('PSM is now on, max temperature is 25');
     };
   };
 
