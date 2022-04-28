@@ -49,6 +49,7 @@ class Thermostat {
 
   reset() {
     this.temperature = 20;
+    return this.temperature;
   };
 
   currentEnergyUsage() {
