@@ -11,8 +11,10 @@ app.get('/', (req, res) => {
 });
 
 app.get('/temperature', (req, res) => {
-  let result = thermostat.getTemperature()
-  res.send(`temperature is ${result}`);
+  let result = {
+    "temperature": thermostat.getTemperature()
+  }
+  res.send(result);
 });
 
 app.post('/up', (req, res) => {
