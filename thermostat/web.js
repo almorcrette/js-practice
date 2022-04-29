@@ -11,20 +11,25 @@ app.get('/', (req, res) => {
 });
 
 app.get('/temperature', (req, res) => {
-  thermostat.getTemperature()
-  // res.send();
+  let result = thermostat.getTemperature()
+  res.send(`temperature is ${result}`);
 });
 
 app.post('/up', (req, res) => {
-  thermostat.up();
+  let result =thermostat.up();
+  res.send(`temperature increased to ${result}`);
+
 });
 
 app.post('/down', (req, res) => {
-  thermostat.down();
+  let result = thermostat.down();
+  res.send(`temperature decreased to ${result}`);
 });
 
 app.delete('/temperature', (req, res) => {
-  thermostat.reset();
+  let result = thermostat.reset();
+  res.send(`temperature reset to ${result}`);
+
 })
 
 console.log(`Server listening on localhost:${port}`);
